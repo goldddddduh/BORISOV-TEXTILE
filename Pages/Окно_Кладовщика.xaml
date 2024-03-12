@@ -1,0 +1,37 @@
+﻿<Window x:Class="БОРИСОВ_ТЕКСТИЛЬ.Pages.Окно_Кладовщика"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:БОРИСОВ_ТЕКСТИЛЬ.Pages"
+        mc:Ignorable="d"
+        Title="Окно_Кладовщика" WindowStartupLocation="CenterScreen"  MinHeight="450" Height="450" MinWidth="900" Width="900">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF7F7DAD" Offset="1"/>
+                <GradientStop Color="#FF565DC7"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13*"></RowDefinition>
+            <RowDefinition Height="92*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="255*"></ColumnDefinition>
+            <ColumnDefinition Width="43*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="WareHouseDataGrid" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" Margin="10,9,8.8,20" Foreground="#FF705151" BorderBrush="#FF639993"  FontSize="24" FontFamily="Times New Roman"  >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Код_Товара}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Товар.Наименование}" Width="250"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата поступления" Binding="{Binding Дата_Поступления}" Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Количество_Товара}"  Foreground="#FF403E3E"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Склад" VerticalAlignment="Center" FontSize="24" FontFamily="Century Gothic" Height="29" Width="76" Margin="20,14,0,9"/>
+        <Button Content="Добавление" HorizontalAlignment="Center" x:Name="AddButton" Grid.Row="1" VerticalAlignment="Top" Width="121" Background="#FFB492FF" BorderBrush="Black" Height="39" Grid.Column="1" FontFamily="Century Gothic" FontSize="18" Margin="0,50,0,0" Click="AddButton_Click" />
+        <Button Content="Удалить" x:Name="DeleteButton" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Bottom" Width="121" RenderTransformOrigin="0.287,0.557" Height="37" Background="#FFD92727" BorderBrush="Black" FontSize="18" Margin="0,0,0,100" FontFamily="Century Gothic" Click="DeleteButton_Click"/>
+    </Grid>
+</Window>

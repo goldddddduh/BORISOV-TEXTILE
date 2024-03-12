@@ -1,0 +1,71 @@
+﻿<Window x:Class="БОРИСОВ_ТЕКСТИЛЬ.Pages.Окно_Каталога"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:БОРИСОВ_ТЕКСТИЛЬ.Pages"
+        mc:Ignorable="d"
+        Title="Окно_Каталога" WindowStartupLocation="CenterScreen"  Height="805" Width="1180">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF7F7DAD" Offset="1"/>
+                <GradientStop Color="#FF565DC7"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="124*"></RowDefinition>
+            <RowDefinition Height="554*"></RowDefinition>
+            <RowDefinition Height="97*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="SearchTextBox" Grid.Row="0" TextChanged="SearchTextBox_TextChanged" FontSize="25"
+         BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,45,0,29" Width="232" Height="50" FontFamily="Century Gothic" Background="White" Foreground="Black">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Grid>
+                                    <ScrollViewer x:Name="PART_ContentHost" Background="White" />
+                                    <TextBlock x:Name="Watermark" Text="Поиск.." Foreground="Black" Margin="0,0,0,9.6" VerticalAlignment="Center"
+                                       Visibility="Collapsed" IsHitTestVisible="False" Background="White" Height="40"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="Text" Value="" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="Watermark" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="Watermark" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Button x:Name="BackButton" Grid.Row="2" Content="←Назад" Click="BackButton_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Century Gothic" HorizontalAlignment="Left" VerticalAlignment="Center" Height="35" Margin="0,33.6,0,28.2" Width="126"></Button>
+        <DataGrid x:Name="ProductsDataGrid" MouseDoubleClick="ProductsDataGrid_MouseDoubleClick" IsReadOnly="True" AutoGenerateColumns="False" Margin="10,9,9.6,9.4" Foreground="Black" BorderBrush="{x:Null}" FontSize="15" FontFamily="Times New Roman" HorizontalGridLinesBrush="#FFf" VerticalGridLinesBrush="#FFfF" Grid.Row="1" Background="{x:Null}">
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Фото"  Width="190">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Name="IsReadImage" Source="{Binding Фото}"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Наименование}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Техническая Характеристика" Binding="{Binding Техническая_Характеристика}" Width="280"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Цена}" Width="55" Foreground="#FF403E3E"></DataGridTextColumn>
+                <DataGridTextColumn Header="Длина" Binding="{Binding Длина}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Right"  Grid.Row="2" TextWrapping="Wrap" Text="БОРИСОВ ТЕКСТИЛЬ" FontFamily="Monotype Corsiva" FontSize="48" Width="485" VerticalAlignment="Center"/>
+        <Button Grid.Row="0" Content="Корзина" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="176" Height="48" FontSize="24" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,20,0"/>
+    </Grid>
+</Window>

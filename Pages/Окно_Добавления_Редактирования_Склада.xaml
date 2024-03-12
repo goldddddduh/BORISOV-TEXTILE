@@ -1,0 +1,30 @@
+﻿<Window x:Class="БОРИСОВ_ТЕКСТИЛЬ.Pages.Окно_Добавления_Редактирования_Склада"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:БОРИСОВ_ТЕКСТИЛЬ.Pages"
+        mc:Ignorable="d"
+        Title="Окно_Добавления_Редактирования_Склада" Height="500" Width="600">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF7F7DAD" Offset="1"/>
+                <GradientStop Color="#FF565DC7"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Наименование" FontSize="30" Foreground="Black" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Text="Дата поступления" Foreground="Black"  FontSize="30" Margin="0,46.8,337.6,149.6" Grid.RowSpan="2" Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center" />
+        <ComboBox Name="ComboCLoth" DisplayMemberPath="Наименование" SelectedItem="{Binding Товар}" Margin="275,42,65.6,55.2"></ComboBox>
+        <TextBox x:Name="Дата_Поступления" Text="{Binding Дата_Поступления}" MaxLength="50" Margin="275,46.6,10,60.4" Background="White" Grid.Row="1" FontSize="20"/>
+
+        <Button Content="Сохранить" x:Name="SaveButton" Grid.Row="2" Margin="0,106.6,181,-1.4" FontSize="20" Foreground="#FF7A6060"  Background="#FFDA9E9E" HorizontalAlignment="Right" Width="232" Click="SaveButton_Click"></Button>
+        <TextBlock Text="Количество" Foreground="Black" FontSize="30" Margin="0,1.6,361,42.6" Grid.Row="2" TextAlignment="Center" />
+        <TextBox Text="{Binding Количество_Товара}" MaxLength="50" Margin="275,9.6,154.6,96.6" Background="White" Grid.Row="2" FontSize="20"/>
+    </Grid>
+</Window>
